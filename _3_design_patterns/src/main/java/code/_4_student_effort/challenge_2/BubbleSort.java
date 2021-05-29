@@ -1,7 +1,5 @@
 package code._4_student_effort.challenge_2;
 
-import java.util.Arrays;
-
 public class BubbleSort implements SortingStrategy {
 
     @Override
@@ -19,10 +17,5 @@ public class BubbleSort implements SortingStrategy {
             if (isSorted)
                 return;
         }
-    }
-
-    public void displaySorted(SortingStrategy sortingStrategy, Integer[] array) {
-        sort(array);
-        System.out.println(Arrays.toString(array));
     }
 }
