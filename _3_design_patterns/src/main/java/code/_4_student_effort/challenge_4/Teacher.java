@@ -19,11 +19,11 @@ public class Teacher implements ObservedSubject {
 
     @Override
     public void unregister(Observer obj) {
-
+        // TODO
     }
 
     @Override
     public void notifyObservers(String message) {
-
+        //  TODO
     }
 }
