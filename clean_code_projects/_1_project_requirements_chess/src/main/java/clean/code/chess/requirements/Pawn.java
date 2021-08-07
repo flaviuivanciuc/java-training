@@ -3,15 +3,15 @@ package clean.code.chess.requirements;
 public class Pawn {
 
     private ChessBoard chessBoard;
-    private int xCoordinate;
-    private int yCoordinate;
+    private static int xCoordinate;
+    private static int yCoordinate;
     private PieceColor pieceColor;
 
     public Pawn(PieceColor pieceColor) {
         this.pieceColor = pieceColor;
     }
 
-    public ChessBoard getChesssBoard() {
+    public ChessBoard getChessBoard() {
         return chessBoard;
     }
 
@@ -19,7 +19,7 @@ public class Pawn {
         this.chessBoard = chessBoard;
     }
 
-    public int getXCoordinate() {
+    public static int getXCoordinate() {
         return xCoordinate;
     }
 
@@ -27,7 +27,7 @@ public class Pawn {
         this.xCoordinate = value;
     }
 
-    public int getYCoordinate() {
+    public static int getYCoordinate() {
         return yCoordinate;
     }
 
@@ -39,12 +39,24 @@ public class Pawn {
         return this.pieceColor;
     }
 
-    private void setPieceColor(PieceColor value) {
+    public void setPieceColor(PieceColor value) {
         pieceColor = value;
     }
 
     public void Move(MovementType movementType, int newX, int newY) {
-        throw new UnsupportedOperationException("Need to implement Pawn.Move()");
+        Pawn[][] pieces = chessBoard.getPieces();
+
+        int oldX = getXCoordinate();
+        int oldY = getYCoordinate();
+
+        if (movementType == MovementType.MOVE) {
+            if (getChessBoard().IsLegalBoardPosition(newX, newY)) {
+                pieces[oldX][oldY] = null;
+                setXCoordinate(newX);
+                setYCoordinate(newY);
+                pieces[newX][newY] = this;
+            }
+        }
     }
 
     @Override
